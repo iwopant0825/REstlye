@@ -23,6 +23,26 @@ const Section = styled.section`
     padding: ${({ theme }) => theme.spacing[16]} 0
       ${({ theme }) => theme.spacing[20]};
   }
+
+  &[id="products"], &[id="activities"], &[id="designers"], &[id="apply"] {
+    /* 헤더와의 겹침 방지 및 앵커 스크롤 오프셋 */
+    scroll-margin-top: ${({ theme }) => theme.spacing[16]};
+    padding-top: ${({ theme }) => theme.spacing[12]};
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      scroll-margin-top: ${({ theme }) => theme.spacing[24]};
+      padding-top: ${({ theme }) => theme.spacing[16]};
+    }
+  }
+
+  &[id="designers"] {
+    /* 디자이너 섹션에서 바로 아래 지원 섹션이 보이지 않도록 바닥 여백 확장 */
+    padding-bottom: ${({ theme }) => theme.spacing[24]};
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      padding-bottom: ${({ theme }) => theme.spacing[32]};
+    }
+  }
 `;
 
 const Container = styled.div`
@@ -491,7 +511,7 @@ const Landing = () => {
           <SocialCTA>
             <Reveal>
               <InstagramButton
-                href="https://instagram.com/REstyle1_official"
+                href="https://www.instagram.com/restyle_official1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram 팔로우하기"
@@ -502,11 +522,11 @@ const Landing = () => {
             </Reveal>
             <SocialNote>
               <a
-                href="https://instagram.com/REstyle1_official"
+                href="https://www.instagram.com/restyle_official1/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                @REstyle1_official
+                @restyle_official1
               </a>
               에서 더 많은 활동들을 확인하세요!
             </SocialNote>
@@ -554,8 +574,8 @@ const Landing = () => {
           </Grid>
 
           <ProductNote>
-            모든 제품 이미지는 <b>샘플</b>이며, 실제 완성품은 디자이너
-            큐레이션과 원단에 따라 상이할 수 있습니다.
+            {/* 제품 고지 문구: 사용자 제공 문구로 교체됩니다. */}
+            모든 제품 관련 고지 문구를 전달해주시면 여기로 반영하겠습니다.
           </ProductNote>
         </Container>
       </Section>
@@ -586,7 +606,7 @@ const Landing = () => {
           <Reveal>
             <Card
               title="디자이너 지원"
-              description="제약을 사랑하는 독립 디자이너를 찾습니다. 공정한 로열티, 배치 투명성, 실질적 임팩트를 제공합니다."
+              description="저희와 함께 폐의류 업사이클링 제품을 디자인 할 디자이너 분들을 찾습니다."
             >
               <ApplyForm>
                 <FormGroup>
@@ -598,17 +618,15 @@ const Landing = () => {
                   <FormInput type="email" placeholder="you@example.com" />
                 </FormGroup>
                 <FormGroup className="full-width">
-                  <FormLabel>포트폴리오 URL</FormLabel>
-                  <FormInput placeholder="https://…" />
+                  <FormLabel>포트폴리오 파일</FormLabel>
+                  <FormInput type="file" accept=".pdf,.ppt,.pptx,.zip,.rar,.7z,.doc,.docx,.png,.jpg,.jpeg" />
                 </FormGroup>
                 <FormGroup className="full-width">
                   <FormLabel>소개/메모</FormLabel>
-                  <FormTextarea placeholder="업사이클링 접근법, 선호 제약, 일반 산출물 등을 알려주세요." />
+                  <FormTextarea placeholder="자신을 소개하고, 저희의 활동과 제품 디자인에 관심이 있는지 표현해주세요." />
                 </FormGroup>
                 <FormFooter>
-                  <FormNote>
-                    지원 시 공정노동·투명성 정책에 동의한 것으로 간주됩니다.
-                  </FormNote>
+                  <FormNote />
                   <SubmitButton type="button">제출</SubmitButton>
                 </FormFooter>
               </ApplyForm>

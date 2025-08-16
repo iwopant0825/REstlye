@@ -119,7 +119,7 @@ const Footer = () => {
                 />
               </LogoIcon>
             </Logo>
-            <Description>순환은 기본, 투명성은 디폴트.</Description>
+            <Description>변화를 사는 선택, 미래를 REstyle.</Description>
           </Brand>
           <Navigation>
             <NavLink href="#activities">활동</NavLink>

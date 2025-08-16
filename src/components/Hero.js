@@ -272,7 +272,7 @@ const RevealContent = () => {
         </GradientText>
       </Title>
       <ButtonGroup className={inView ? "reveal" : ""}>
-        <PrimaryButton href="#products">지금 주문</PrimaryButton>
+        <PrimaryButton href="#products">제품 보기</PrimaryButton>
         <SecondaryButton href="#activities">활동 보기</SecondaryButton>
       </ButtonGroup>
     </Content>
