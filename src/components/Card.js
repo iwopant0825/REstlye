@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -78,9 +78,17 @@ const ProductImage = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.spacing[3]};
+  overflow: hidden;
 
   svg {
     opacity: 0.7;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 `;
 
@@ -205,6 +213,7 @@ export const Card = ({ number, badge, title, description, children }) => {
 
 // Product Card 컴포넌트
 export const ProductCard = ({ product, onSelect }) => {
+  const [imageError, setImageError] = useState(false);
   const SketchIcon = () => (
     <svg width="72" height="72" viewBox="0 0 72 72">
       <rect
@@ -232,7 +241,17 @@ export const ProductCard = ({ product, onSelect }) => {
     <ProductCardContainer>
       <CardContent>
         <ProductImage>
-          <SketchIcon />
+          {product.img && !imageError ? (
+            <img
+              src={product.img}
+              alt={product.name}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <SketchIcon />
+          )}
         </ProductImage>
         <ProductBadges>
           {product.badges.map((badge, index) => (

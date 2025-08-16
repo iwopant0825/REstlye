@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     // Dark green brand
-    bg: "#0B1210",
+    bg: "#000000",
     surface: "#121A17",
     textPrimary: "#E8F0EC",
     textSecondary: "#A9BBB4",

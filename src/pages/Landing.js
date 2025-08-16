@@ -6,15 +6,12 @@ import { Card, ProductCard, DesignerCard } from "../components/Card";
 import Reveal from "../components/Reveal";
 import Modal from "../components/Modal";
 import Footer from "../components/Footer";
+import { FaInstagram } from "react-icons/fa";
 
 const PageContainer = styled.div`
   min-height: 100vh;
   width: 100%;
-  background: radial-gradient(
-    1200px 600px at 50% -200px,
-    rgba(18, 26, 23, 0.9),
-    ${({ theme }) => theme.colors.bg}
-  );
+  background: ${({ theme }) => theme.colors.bg};
   color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
@@ -150,6 +147,51 @@ const ProcessGrid = styled.div`
   }
 `;
 
+const SocialCTA = styled.div`
+  margin-top: ${({ theme }) => theme.spacing[8]};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing[2]};
+`;
+
+const InstagramButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing[2]};
+  border-radius: ${({ theme }) => theme.borderRadius.xl};
+  padding: ${({ theme }) => theme.spacing[3]} ${({ theme }) => theme.spacing[5]};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  font-weight: 500;
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary[100]};
+    border-color: ${({ theme }) => theme.colors.primary[400]};
+    transform: translateY(-1px);
+    box-shadow: ${({ theme }) => theme.shadows.sm};
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    color: ${({ theme }) => theme.colors.primary[500]};
+  }
+`;
+
+const SocialNote = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  text-align: center;
+  a {
+    color: ${({ theme }) => theme.colors.primary[400]};
+  }
+`;
+
 const DesignerGrid = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.spacing[5]};
@@ -162,92 +204,6 @@ const DesignerGrid = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: repeat(3, 1fr);
   }
-`;
-
-const TransparencyCard = styled.div`
-  margin-top: ${({ theme }) => theme.spacing[10]};
-  border-radius: ${({ theme }) => theme.borderRadius["2xl"]};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.surface};
-  backdrop-filter: blur(10px);
-  padding: ${({ theme }) => theme.spacing[6]};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-`;
-
-const TransparencyHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: ${({ theme }) => theme.spacing[3]};
-  margin-bottom: ${({ theme }) => theme.spacing[4]};
-`;
-
-const TransparencyTitle = styled.h3`
-  font-size: ${({ theme }) => theme.fontSizes.lg};
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.textPrimary};
-`;
-
-const TransparencyBadges = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing[2]};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-`;
-
-const TransparencyBadge = styled.span`
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.surface};
-  padding: ${({ theme }) => theme.spacing[1]} ${({ theme }) => theme.spacing[2]};
-  color: ${({ theme }) => theme.colors.textSecondary};
-`;
-
-const Table = styled.div`
-  overflow-x: auto;
-  margin-top: ${({ theme }) => theme.spacing[4]};
-`;
-
-const TableContent = styled.table`
-  width: 100%;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  border-collapse: collapse;
-`;
-
-const TableHeader = styled.th`
-  padding: ${({ theme }) => theme.spacing[2]} ${({ theme }) => theme.spacing[4]}
-    ${({ theme }) => theme.spacing[2]} 0;
-  text-align: left;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-weight: 500;
-`;
-
-const TableCell = styled.td`
-  padding: ${({ theme }) => theme.spacing[2]} ${({ theme }) => theme.spacing[4]}
-    ${({ theme }) => theme.spacing[2]} 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
-  color: ${({ theme }) => theme.colors.gray[700]};
-
-  &:first-child {
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.gray[900]};
-  }
-`;
-
-const TableBadge = styled.span`
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.surface};
-  padding: ${({ theme }) => theme.spacing[1]} ${({ theme }) => theme.spacing[2]};
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  color: ${({ theme }) => theme.colors.textSecondary};
-`;
-
-const TableNote = styled.p`
-  margin-top: ${({ theme }) => theme.spacing[3]};
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  color: ${({ theme }) => theme.colors.gray[500]};
 `;
 
 const ProductNote = styled.p`
@@ -380,74 +336,68 @@ const Landing = () => {
   const products = [
     {
       id: 1,
-      name: "에코 토트 (스케치)",
-      type: "가방",
+      name: "후드티 (스케치 A)",
+      type: "후드티",
       price: 29000,
-      img: "",
-      badges: ["업사이클링", "원오브원"],
-      sku: "TOTE-SKT",
+      img: "/img.jpg",
+      badges: ["후드티", "스케치"],
+      sku: "HOODIE-A",
     },
     {
       id: 2,
-      name: "파우치 (스케치)",
-      type: "파우치",
+      name: "후드티 (스케치 B)",
+      type: "후드티",
       price: 19000,
-      img: "",
-      badges: ["배치ID", "추적가능"],
-      sku: "POUCH-SKT",
+      img: "/img.jpg",
+      badges: ["후드티", "프론트"],
+      sku: "HOODIE-B",
     },
     {
       id: 3,
-      name: "키링 (스케치)",
-      type: "액세서리",
+      name: "후드티 (스케치 C)",
+      type: "후드티",
       price: 9000,
-      img: "",
-      badges: ["오프컷 활용"],
-      sku: "KEYRING-SKT",
+      img: "/img.jpg",
+      badges: ["후드티", "백"],
+      sku: "HOODIE-C",
     },
     {
       id: 4,
-      name: "북커버 (스케치)",
-      type: "문구",
+      name: "후드티 (스케치 D)",
+      type: "후드티",
       price: 15000,
-      img: "",
-      badges: ["데님", "랜덤 스티치"],
-      sku: "BOOKCOVER-SKT",
+      img: "/img.jpg",
+      badges: ["후드티", "디테일"],
+      sku: "HOODIE-D",
     },
   ];
 
-  const filters = ["전체", "가방", "파우치", "액세서리", "문구"];
+  const filters = ["전체", "후드티"];
 
   const steps = [
     {
       title: "수거",
-      desc: "파트너 수거함/드라이브로 의류를 수거하고, 수량·섬유를 기록합니다.",
-      kpi: "+1.2t/월",
+      desc: "의류 수거함, 파트너 제휴를 통해 폐의류를 모으고 기록한다.",
     },
     {
-      title: "분류·살균",
-      desc: "원단·색·상태 기준으로 자동/수동 분류 후 위생 처리합니다.",
-      kpi: ">98% 위생 통과",
+      title: "분류·가공",
+      desc: "수거된 의류를 위생·상태 기준으로 분류하고 재활용 가능한 원단으로 가공한다.",
     },
     {
       title: "디자인 큐레이션",
-      desc: "SKU 스케치에 맞춰 디자이너가 원단 조합·제약을 사전 정의합니다.",
-      kpi: "디자이너 14명",
+      desc: "무명 디자이너가 원단을 조합해 제품 디자인을 정의하고 제작 과정에 참여한다.",
     },
     {
-      title: "배치 재단·봉제",
-      desc: "배치ID로 추적하며 산업용 재단/봉제를 진행합니다. 오프컷 활용률 >70%.",
-      kpi: "Batch #27",
+      title: "제작·봉제",
+      desc: "산업용 재단·봉제 시스템으로 디자이너 큐레이션에 맞춰 제품을 대량 생산한다.",
     },
     {
-      title: "검수·태깅",
-      desc: "내구성 체크 후 QR/RFID로 원산·임팩트 데이터를 태깅합니다.",
-      kpi: "반품 0.8%",
+      title: "검사·태깅",
+      desc: "품질을 확인하고 QR/RFID로 원산지와 임팩트 데이터를 기록한다.",
     },
     {
       title: "배송·공개",
-      desc: "펄프 메일러로 배송하며 배치 레저드를 공개합니다.",
-      kpi: "평균 72h",
+      desc: "소비자에게 랜덤 발송하며 제작 과정과 ESG 데이터를 투명하게 공개한다.",
     },
   ];
 
@@ -523,9 +473,6 @@ const Landing = () => {
         <Container>
           <SectionHeader>
             <Reveal as={SectionTitle}>활동 — 그린워싱 없이 공개합니다</Reveal>
-            <Reveal as={SectionLink} href="#ledger">
-              배치 레저드 열기 →
-            </Reveal>
           </SectionHeader>
 
           <ProcessGrid>
@@ -541,46 +488,31 @@ const Landing = () => {
             ))}
           </ProcessGrid>
 
-          <Reveal as={TransparencyCard} id="ledger">
-            <TransparencyHeader>
-              <TransparencyTitle>투명성 레저드</TransparencyTitle>
-              <TransparencyBadges>
-                <TransparencyBadge>분기: 3분기</TransparencyBadge>
-                <TransparencyBadge>감사: 진행 중</TransparencyBadge>
-              </TransparencyBadges>
-            </TransparencyHeader>
-            <Table>
-              <TableContent>
-                <thead>
-                  <tr>
-                    <TableHeader>배치</TableHeader>
-                    <TableHeader>수량(개)</TableHeader>
-                    <TableHeader>소재 믹스</TableHeader>
-                    <TableHeader>전환량</TableHeader>
-                    <TableHeader>CO₂e 절감</TableHeader>
-                    <TableHeader>상태</TableHeader>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ledgerData.map((row) => (
-                    <tr key={row.b}>
-                      <TableCell>{row.b}</TableCell>
-                      <TableCell>{row.i}</TableCell>
-                      <TableCell>{row.m}</TableCell>
-                      <TableCell>{row.d}</TableCell>
-                      <TableCell>{row.c}</TableCell>
-                      <TableCell>
-                        <TableBadge>{row.s}</TableBadge>
-                      </TableCell>
-                    </tr>
-                  ))}
-                </tbody>
-              </TableContent>
-            </Table>
-            <TableNote>
-              각 제품에는 배치·디자이너·소싱 기록으로 연결되는 QR이 동봉됩니다.
-            </TableNote>
-          </Reveal>
+          <SocialCTA>
+            <Reveal>
+              <InstagramButton
+                href="https://instagram.com/REstyle1_official"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram 팔로우하기"
+              >
+                <FaInstagram />
+                <span>Instagram 방문하기</span>
+              </InstagramButton>
+            </Reveal>
+            <SocialNote>
+              <a
+                href="https://instagram.com/REstyle1_official"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @REstyle1_official
+              </a>
+              에서 더 많은 활동들을 확인하세요!
+            </SocialNote>
+          </SocialCTA>
+
+          {/* Transparency ledger removed as requested */}
         </Container>
       </Section>
 
@@ -622,8 +554,8 @@ const Landing = () => {
           </Grid>
 
           <ProductNote>
-            완성품은 선택한 디자이너의 제약 내에서 <b>랜덤</b>으로
-            제작·발송됩니다. 하자 품목에 한해 교환/환불이 가능합니다.
+            모든 이미지는 <b>후드티</b> 스케치 예시이며, 실제 완성품은 디자이너
+            큐레이션에 따라 달라질 수 있습니다.
           </ProductNote>
         </Container>
       </Section>
