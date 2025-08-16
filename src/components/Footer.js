@@ -122,7 +122,7 @@ const Footer = () => {
             <Description>순환은 기본, 투명성은 디폴트.</Description>
           </Brand>
           <Navigation>
-            <NavLink href="#activities">투명성</NavLink>
+            <NavLink href="#activities">활동</NavLink>
             <Separator>·</Separator>
             <NavLink href="#designers">디자이너</NavLink>
             <Separator>·</Separator>

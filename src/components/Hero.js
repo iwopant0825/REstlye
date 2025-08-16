@@ -273,7 +273,7 @@ const RevealContent = () => {
       </Title>
       <ButtonGroup className={inView ? "reveal" : ""}>
         <PrimaryButton href="#products">지금 주문</PrimaryButton>
-        <SecondaryButton href="#activities">투명성 보기</SecondaryButton>
+        <SecondaryButton href="#activities">활동 보기</SecondaryButton>
       </ButtonGroup>
     </Content>
   );

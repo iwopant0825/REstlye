@@ -336,43 +336,43 @@ const Landing = () => {
   const products = [
     {
       id: 1,
-      name: "후드티 (스케치 A)",
-      type: "후드티",
-      price: 29000,
-      img: "/img.jpg",
-      badges: ["후드티", "스케치"],
-      sku: "HOODIE-A",
+      name: "에코백",
+      type: "에코백",
+      price: 22000,
+      img: "https://s3.marpple.co/files/u_1686012/2022/4/original/9f1c97f4723f535f95f27ae6b23507166260c31f1.jpg",
+      badges: ["에코백"],
+      sku: "ECOBAG-01",
     },
     {
       id: 2,
-      name: "후드티 (스케치 B)",
-      type: "후드티",
+      name: "키링",
+      type: "키링",
       price: 19000,
-      img: "/img.jpg",
-      badges: ["후드티", "프론트"],
-      sku: "HOODIE-B",
+      img: "https://mblogthumb-phinf.pstatic.net/MjAyNDEwMDFfMTYx/MDAxNzI3NzczNDE1MjI1.JxoWdv3ZSM6D7hRv7D4vYi99Ch03pWhgJ_Fze-84zdAg.hQk5aeqEIt_iABfEVVZ6TnhbeXTYtcdprXG-p82re0wg.JPEG/1727773338252-0.jpg?type=w800",
+      badges: ["키링"],
+      sku: "KEYRING-01",
     },
     {
       id: 3,
-      name: "후드티 (스케치 C)",
+      name: "후드티",
       type: "후드티",
-      price: 9000,
-      img: "/img.jpg",
-      badges: ["후드티", "백"],
-      sku: "HOODIE-C",
+      price: 22000,
+      img: "https://i.pinimg.com/564x/37/54/9c/37549c77966b0bcd674d010f046faf4b.jpg",
+      badges: ["후드티"],
+      sku: "HOODIE-01",
     },
     {
       id: 4,
-      name: "후드티 (스케치 D)",
-      type: "후드티",
+      name: "티셔츠",
+      type: "티셔츠",
       price: 15000,
-      img: "/img.jpg",
-      badges: ["후드티", "디테일"],
-      sku: "HOODIE-D",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdMrqBPfUb06F9Pb3gwNNom9lTpT0S0Ly0ZA&s",
+      badges: ["티셔츠"],
+      sku: "TSHIRT-01",
     },
   ];
 
-  const filters = ["전체", "후드티"];
+  const filters = ["전체", "에코백", "키링", "후드티", "티셔츠"];
 
   const steps = [
     {
@@ -472,7 +472,7 @@ const Landing = () => {
       <Section id="activities">
         <Container>
           <SectionHeader>
-            <Reveal as={SectionTitle}>활동 — 그린워싱 없이 공개합니다</Reveal>
+            <Reveal as={SectionTitle}>활동 - 그린워싱 없이 공개합니다</Reveal>
           </SectionHeader>
 
           <ProcessGrid>
@@ -520,7 +520,7 @@ const Landing = () => {
       <Section id="products">
         <Container>
           <SectionHeader>
-            <Reveal as={SectionTitle}>제품 — 스케치 선택형</Reveal>
+            <Reveal as={SectionTitle}>제품 - 스케치 선택형</Reveal>
             <FilterContainer>
               {filters.map((filter) => (
                 <FilterButton
@@ -554,8 +554,8 @@ const Landing = () => {
           </Grid>
 
           <ProductNote>
-            모든 이미지는 <b>후드티</b> 스케치 예시이며, 실제 완성품은 디자이너
-            큐레이션에 따라 달라질 수 있습니다.
+            모든 제품 이미지는 <b>샘플</b>이며, 실제 완성품은 디자이너
+            큐레이션과 원단에 따라 상이할 수 있습니다.
           </ProductNote>
         </Container>
       </Section>
@@ -564,7 +564,7 @@ const Landing = () => {
       <Section id="designers">
         <Container>
           <SectionHeader>
-            <Reveal as={SectionTitle}>디자이너 — 독립·공정 보상</Reveal>
+            <Reveal as={SectionTitle}>디자이너 - 독립·공정 보상</Reveal>
             <Reveal as={SectionLink} href="#apply">
               디자이너 지원 →
             </Reveal>

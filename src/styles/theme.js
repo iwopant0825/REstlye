@@ -1,6 +1,7 @@
 export const theme = {
   colors: {
     // Dark green brand
+
     bg: "#000000",
     surface: "#121A17",
     textPrimary: "#E8F0EC",

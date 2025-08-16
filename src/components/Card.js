@@ -266,7 +266,7 @@ export const ProductCard = ({ product, onSelect }) => {
             className="product-button"
             onClick={() => onSelect(product)}
           >
-            선택
+            디자이너 선택
           </ProductButton>
         </ProductFooter>
       </CardContent>
