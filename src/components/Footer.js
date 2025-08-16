@@ -42,13 +42,12 @@ const Brand = styled.div`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing[3]};
   margin-bottom: ${({ theme }) => theme.spacing[2]};
 `;
 
 const LogoIcon = styled.div`
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 4.25rem;
+  height: 4.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +107,6 @@ const Footer = () => {
               <LogoIcon>
                 <img src="/logo.svg" alt="REstyle" aria-label="REstyle" />
               </LogoIcon>
-              <LogoText>REstyle</LogoText>
             </Logo>
             <Description>순환은 기본, 투명성은 디폴트.</Description>
           </Brand>

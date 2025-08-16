@@ -33,12 +33,11 @@ const HeaderInner = styled.div`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing[3]};
 `;
 
 const LogoIcon = styled.div`
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 6.25rem;
+  height: 6.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,7 +222,6 @@ const Header = () => {
           <LogoIcon>
             <img src="/logo.svg" alt="REstyle" aria-label="REstyle" />
           </LogoIcon>
-          <LogoText href="#home">REstyle</LogoText>
         </Logo>
 
         <DesktopNav>
