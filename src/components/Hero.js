@@ -265,10 +265,10 @@ const RevealContent = () => {
   return (
     <Content ref={ref}>
       <Title>
-        <span>Buy the Change.</span>
+        <span>변화를 사는 선택.</span>
         <br />
         <GradientText className={inView ? "reveal" : ""}>
-          REstyle the Future.
+          미래를 REstyle.
         </GradientText>
       </Title>
       <ButtonGroup className={inView ? "reveal" : ""}>

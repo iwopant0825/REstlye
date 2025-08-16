@@ -228,7 +228,11 @@ const Header = () => {
       <HeaderInner>
         <Logo>
           <LogoIcon>
-            <img src="/logo.svg" alt="REstyle" aria-label="REstyle" />
+            <img
+              src={process.env.PUBLIC_URL + "/Logo.svg"}
+              alt="REstyle"
+              aria-label="REstyle"
+            />
           </LogoIcon>
         </Logo>
 

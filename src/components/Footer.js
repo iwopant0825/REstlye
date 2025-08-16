@@ -112,7 +112,11 @@ const Footer = () => {
           <Brand>
             <Logo>
               <LogoIcon>
-                <img src="/logo.svg" alt="REstyle" aria-label="REstyle" />
+                <img
+                  src={process.env.PUBLIC_URL + "/Logo.svg"}
+                  alt="REstyle"
+                  aria-label="REstyle"
+                />
               </LogoIcon>
             </Logo>
             <Description>순환은 기본, 투명성은 디폴트.</Description>
@@ -125,7 +129,7 @@ const Footer = () => {
             <NavLink href="#apply">지원</NavLink>
           </Navigation>
         </FooterContent>
-        <Copyright>© {currentYear} REstyle. All rights reserved.</Copyright>
+        <Copyright>© {currentYear} REstyle. 모든 권리 보유.</Copyright>
       </Container>
     </FooterContainer>
   );

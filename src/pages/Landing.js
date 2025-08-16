@@ -74,16 +74,7 @@ const SectionLink = styled.a`
   }
 `;
 
-const FlowDescription = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing[3]};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.textSecondary};
-
-  b {
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.textPrimary};
-  }
-`;
+// FlowDescription removed as per request
 
 const FilterContainer = styled.div`
   display: none;
@@ -552,10 +543,10 @@ const Landing = () => {
 
           <Reveal as={TransparencyCard} id="ledger">
             <TransparencyHeader>
-              <TransparencyTitle>Transparency Ledger</TransparencyTitle>
+              <TransparencyTitle>투명성 레저드</TransparencyTitle>
               <TransparencyBadges>
-                <TransparencyBadge>분기: Q3</TransparencyBadge>
-                <TransparencyBadge>감사: 진행중</TransparencyBadge>
+                <TransparencyBadge>분기: 3분기</TransparencyBadge>
+                <TransparencyBadge>감사: 진행 중</TransparencyBadge>
               </TransparencyBadges>
             </TransparencyHeader>
             <Table>
@@ -596,10 +587,6 @@ const Landing = () => {
       {/* Products */}
       <Section id="products">
         <Container>
-          <FlowDescription>
-            플로우: <b>스케치 선택</b> → <b>디자이너 선택</b> →{" "}
-            <b>랜덤 완성품 배송</b>
-          </FlowDescription>
           <SectionHeader>
             <Reveal as={SectionTitle}>제품 — 스케치 선택형</Reveal>
             <FilterContainer>
