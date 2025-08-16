@@ -11,7 +11,14 @@ const FooterContainer = styled.footer`
 const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.spacing[4]};
+  padding-left: max(
+    ${({ theme }) => theme.spacing[4]},
+    env(safe-area-inset-left)
+  );
+  padding-right: max(
+    ${({ theme }) => theme.spacing[4]},
+    env(safe-area-inset-right)
+  );
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 ${({ theme }) => theme.spacing[6]};

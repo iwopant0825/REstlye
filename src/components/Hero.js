@@ -8,6 +8,7 @@ const HeroSection = styled.section`
   padding: 2rem 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 3rem 0;
@@ -15,7 +16,7 @@ const HeroSection = styled.section`
 `;
 
 const BackgroundAccents = styled.div`
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -10;
   pointer-events: none;
@@ -29,18 +30,18 @@ const FloatingCircle = styled.div`
   animation-delay: ${({ $delay }) => $delay}s;
 
   &.circle-1 {
-    top: -5rem;
-    left: -6rem;
-    width: 20rem;
-    height: 20rem;
+    top: -6rem;
+    left: -8rem;
+    width: 18rem;
+    height: 18rem;
     background: rgba(16, 185, 129, 0.3);
   }
 
   &.circle-2 {
-    top: 10rem;
-    right: -6rem;
-    width: 24rem;
-    height: 24rem;
+    top: 6rem;
+    right: -8rem;
+    width: 20rem;
+    height: 20rem;
     background: rgba(20, 184, 166, 0.3);
   }
 
@@ -48,19 +49,45 @@ const FloatingCircle = styled.div`
     top: 33.333333%;
     left: 50%;
     transform: translateX(-50%);
-    width: 16rem;
-    height: 16rem;
+    width: 14rem;
+    height: 14rem;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(40px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     filter: blur(30px);
   }
+
+  @media (max-width: 480px) {
+    &.circle-1 {
+      width: 12rem;
+      height: 12rem;
+      left: -4rem;
+      top: -4rem;
+    }
+    &.circle-2 {
+      width: 14rem;
+      height: 14rem;
+      right: -5rem;
+      top: 6rem;
+    }
+    &.circle-3 {
+      display: none;
+    }
+  }
 `;
 
 const Container = styled.div`
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.spacing[4]};
+  padding-left: max(
+    ${({ theme }) => theme.spacing[4]},
+    env(safe-area-inset-left)
+  );
+  padding-right: max(
+    ${({ theme }) => theme.spacing[4]},
+    env(safe-area-inset-right)
+  );
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 ${({ theme }) => theme.spacing[6]};
@@ -72,20 +99,20 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 48rem;
+  max-width: 46rem;
   margin: 0 auto;
   text-align: center;
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-size: clamp(2rem, 5.2vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.025em;
   color: ${({ theme }) => theme.colors.textPrimary};
   line-height: 1.1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
   }
 `;
 
@@ -107,7 +134,7 @@ const GradientText = styled.span`
 
 const Subtitle = styled.p`
   margin-top: ${({ theme }) => theme.spacing[5]};
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
   color: ${({ theme }) => theme.colors.textSecondary};
   line-height: 1.6;
   max-width: 48ch;

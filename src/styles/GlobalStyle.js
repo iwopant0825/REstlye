@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.bg};
     animation: pageEnter 0.5s ease-out both;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
 
   code {
@@ -145,7 +146,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .container {
-    width: 100%;
+    width: 100vw;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 ${({ theme }) => theme.spacing[4]};

@@ -14,8 +14,16 @@ const HeaderContainer = styled.header`
 
 const HeaderInner = styled.div`
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.spacing[4]};
+  padding-left: max(
+    ${({ theme }) => theme.spacing[4]},
+    env(safe-area-inset-left)
+  );
+  padding-right: max(
+    ${({ theme }) => theme.spacing[4]},
+    env(safe-area-inset-right)
+  );
   display: flex;
   align-items: center;
   justify-content: space-between;
