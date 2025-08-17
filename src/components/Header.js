@@ -38,9 +38,10 @@ const HeaderInner = styled.div`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const LogoIcon = styled.div`
@@ -226,7 +227,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderInner>
-        <Logo>
+        <Logo href="#home">
           <LogoIcon>
             <img
               src={process.env.PUBLIC_URL + "/Logo.svg"}

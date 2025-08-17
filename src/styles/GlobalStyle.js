@@ -132,6 +132,13 @@ export const GlobalStyle = createGlobalStyle`
   .reveal { opacity: 0; transform: translateY(10px); }
   .reveal.is-inview { opacity: 1; transform: none; animation: fadeIn 600ms ease var(--reveal-delay, 0ms) both; }
 
+  /* Scroll cue animation */
+  @keyframes scrollWheel {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    60% { transform: translate(-50%, 10px); opacity: 0; }
+    100% { opacity: 0; }
+  }
+
   /* 유틸리티 클래스 */
   .sr-only {
     position: absolute;

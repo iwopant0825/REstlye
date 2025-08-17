@@ -196,6 +196,8 @@ const SecondaryButton = styled.a`
   }
 `;
 
+// Scroll cue removed as requested
+
 const KPIGrid = styled.div`
   margin-top: ${({ theme }) => theme.spacing[10]};
   display: grid;
@@ -272,8 +274,8 @@ const RevealContent = () => {
         </GradientText>
       </Title>
       <ButtonGroup className={inView ? "reveal" : ""}>
-        <PrimaryButton href="#products">제품 보기</PrimaryButton>
         <SecondaryButton href="#activities">활동 보기</SecondaryButton>
+        <PrimaryButton href="#products">제품 보기</PrimaryButton>
       </ButtonGroup>
     </Content>
   );

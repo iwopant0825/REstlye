@@ -93,6 +93,60 @@ const SectionLink = styled.a`
 
 // FlowDescription removed as per request
 
+// Hero 아래 소개 섹션
+const IntroSection = styled.section`
+  padding: ${({ theme }) => theme.spacing[16]} 0;
+  scroll-margin-top: ${({ theme }) => theme.spacing[16]};
+  padding-bottom: ${({ theme }) => theme.spacing[24]};
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spacing[20]} 0;
+    scroll-margin-top: ${({ theme }) => theme.spacing[24]};
+    padding-bottom: ${({ theme }) => theme.spacing[32]};
+  }
+`;
+
+const IntroTexts = styled.div`
+  max-width: 72ch;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing[3]};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-size: ${({ theme }) => theme.fontSizes.lg};
+  line-height: 1.8;
+`;
+
+const IntroLine = styled.p``;
+
+const Accent = styled.span`
+  color: ${({ theme }) => theme.colors.primary[500]};
+  font-weight: 600;
+`;
+
+const ScrollCue = styled.div`
+  position: relative;
+  width: 28px;
+  height: 48px;
+  margin: ${({ theme }) => theme.spacing[8]} auto 0;
+  border-radius: 20px;
+  border: 2px solid ${({ theme }) => theme.colors.gray[400]};
+  opacity: 0.85;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    width: 4px;
+    height: 10px;
+    background: ${({ theme }) => theme.colors.gray[700]};
+    border-radius: 4px;
+    transform: translateX(-50%);
+    animation: scrollWheel 1.6s ease-in-out infinite;
+  }
+`;
+
 const FilterContainer = styled.div`
   display: none;
   align-items: center;
@@ -345,6 +399,7 @@ const Landing = () => {
   const [activeFilter, setActiveFilter] = useState("전체");
   const [openProduct, setOpenProduct] = useState(null);
   const [selectedDesigner, setSelectedDesigner] = useState("");
+  
 
   const nav = [
     { label: "활동", href: "#activities" },
@@ -487,6 +542,21 @@ const Landing = () => {
     <PageContainer>
       <Header />
       <Hero />
+      <IntroSection id="intro">
+        <Container>
+          <IntroTexts>
+            <IntroLine>
+              저희는 <Accent>버려진 의류</Accent>를 새로운 제품으로 재탄생시키는 <Accent>업사이클링</Accent> 플랫폼입니다.
+            </IntroLine>
+            <IntroLine>
+              기존 업사이클링의 소규모 한계를 넘어 산업용 대량생산 시스템을 구축했습니다.
+            </IntroLine>
+            <IntroLine>
+              디자이너가 선별한 제품 중 랜덤 디자인으로 배송되는 <Accent>특별한 경험</Accent>을 제공합니다.
+            </IntroLine>
+          </IntroTexts>
+        </Container>
+      </IntroSection>
 
       {/* Activities / Transparency */}
       <Section id="activities">
@@ -540,7 +610,7 @@ const Landing = () => {
       <Section id="products">
         <Container>
           <SectionHeader>
-            <Reveal as={SectionTitle}>제품 - 스케치 선택형</Reveal>
+            <Reveal as={SectionTitle}>제품 - 종류&도안 선택</Reveal>
             <FilterContainer>
               {filters.map((filter) => (
                 <FilterButton
@@ -574,8 +644,7 @@ const Landing = () => {
           </Grid>
 
           <ProductNote>
-            {/* 제품 고지 문구: 사용자 제공 문구로 교체됩니다. */}
-            모든 제품 관련 고지 문구를 전달해주시면 여기로 반영하겠습니다.
+            원하시는 제품의 종류와 도안을 선택해주세요
           </ProductNote>
         </Container>
       </Section>
@@ -584,7 +653,7 @@ const Landing = () => {
       <Section id="designers">
         <Container>
           <SectionHeader>
-            <Reveal as={SectionTitle}>디자이너 - 독립·공정 보상</Reveal>
+            <Reveal as={SectionTitle}>디자이너 - 저희와 함께하고 있는 분들</Reveal>
             <Reveal as={SectionLink} href="#apply">
               디자이너 지원 →
             </Reveal>
@@ -606,7 +675,7 @@ const Landing = () => {
           <Reveal>
             <Card
               title="디자이너 지원"
-              description="저희와 함께 폐의류 업사이클링 제품을 디자인 할 디자이너 분들을 찾습니다."
+              description="제품을 작업할 디자이너 분들을 찾습니다."
             >
               <ApplyForm>
                 <FormGroup>
