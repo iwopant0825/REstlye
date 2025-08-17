@@ -227,7 +227,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderInner>
-        <Logo href="#home">
+        <Logo href="#home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <LogoIcon>
             <img
               src={process.env.PUBLIC_URL + "/Logo.svg"}

@@ -7,6 +7,7 @@ import Reveal from "../components/Reveal";
 import Modal from "../components/Modal";
 import Footer from "../components/Footer";
 import { FaInstagram } from "react-icons/fa";
+import { products as initialProducts } from "../data/products";
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -408,44 +409,7 @@ const Landing = () => {
     { label: "지원", href: "#apply" },
   ];
 
-  const products = [
-    {
-      id: 1,
-      name: "에코백",
-      type: "에코백",
-      price: 22000,
-      img: "https://s3.marpple.co/files/u_1686012/2022/4/original/9f1c97f4723f535f95f27ae6b23507166260c31f1.jpg",
-      badges: ["에코백"],
-      sku: "ECOBAG-01",
-    },
-    {
-      id: 2,
-      name: "키링",
-      type: "키링",
-      price: 19000,
-      img: "https://mblogthumb-phinf.pstatic.net/MjAyNDEwMDFfMTYx/MDAxNzI3NzczNDE1MjI1.JxoWdv3ZSM6D7hRv7D4vYi99Ch03pWhgJ_Fze-84zdAg.hQk5aeqEIt_iABfEVVZ6TnhbeXTYtcdprXG-p82re0wg.JPEG/1727773338252-0.jpg?type=w800",
-      badges: ["키링"],
-      sku: "KEYRING-01",
-    },
-    {
-      id: 3,
-      name: "후드티",
-      type: "후드티",
-      price: 22000,
-      img: "https://i.pinimg.com/564x/37/54/9c/37549c77966b0bcd674d010f046faf4b.jpg",
-      badges: ["후드티"],
-      sku: "HOODIE-01",
-    },
-    {
-      id: 4,
-      name: "티셔츠",
-      type: "티셔츠",
-      price: 15000,
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdMrqBPfUb06F9Pb3gwNNom9lTpT0S0Ly0ZA&s",
-      badges: ["티셔츠"],
-      sku: "TSHIRT-01",
-    },
-  ];
+  const products = initialProducts;
 
   const filters = ["전체", "에코백", "키링", "후드티", "티셔츠"];
 
@@ -638,7 +602,12 @@ const Landing = () => {
           <Grid>
             {visibleProducts.map((product, i) => (
               <Reveal key={product.id} delay={i * 40}>
-                <ProductCard product={product} onSelect={openDetail} />
+                <ProductCard
+                  product={product}
+                  onSelect={(p) => {
+                    window.location.hash = `#product/${p.sku}`;
+                  }}
+                />
               </Reveal>
             ))}
           </Grid>
@@ -675,7 +644,7 @@ const Landing = () => {
           <Reveal>
             <Card
               title="디자이너 지원"
-              description="제품을 작업할 디자이너 분들을 찾습니다."
+              description="저희와 함께 폐의류 업사이클링 제품을 작업할 디자이너 분들을 찾습니다."
             >
               <ApplyForm>
                 <FormGroup>
