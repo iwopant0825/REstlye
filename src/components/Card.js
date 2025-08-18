@@ -178,21 +178,7 @@ const DesignerTag = styled.span`
   color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
-const DesignerFooter = styled.div`
-  margin-top: ${({ theme }) => theme.spacing[4]};
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing[2]};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-`;
-
-const DesignerFeature = styled.span`
-  border-radius: ${({ theme }) => theme.borderRadius.xl};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.surface};
-  padding: ${({ theme }) => theme.spacing[1]} ${({ theme }) => theme.spacing[2]};
-  color: ${({ theme }) => theme.colors.textSecondary};
-`;
+// 로열티/대시보드 표시 제거 (요청)
 
 // 기본 Card 컴포넌트
 export const Card = ({ number, badge, title, description, children }) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
 import theme from "./styles/theme";
@@ -11,12 +11,30 @@ function App() {
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash || "");
     window.addEventListener("hashchange", onHashChange);
+    // 초기 진입 시 현재 해시를 반영하고 스크롤 동기화
+    onHashChange();
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
+  const prevIsProductRef = useRef(null);
   useEffect(() => {
-    // 라우트 전환 시 상단으로 이동
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const isProduct = hash.startsWith("#product/");
+    const prevIsProduct = prevIsProductRef.current;
+    // Landing ↔ ProductDetail 전환시에만 상단으로 스크롤
+    if (prevIsProduct !== null && prevIsProduct !== isProduct) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    prevIsProductRef.current = isProduct;
+    // Landing 내부 섹션 이동 처리 (#activities 등)
+    if (!isProduct && hash && hash.length > 1) {
+      const target = document.querySelector(hash);
+      if (target) {
+        // 다음 페인트 이후 스크롤 보장
+        requestAnimationFrame(() =>
+          target.scrollIntoView({ behavior: "smooth", block: "start" })
+        );
+      }
+    }
   }, [hash]);
 
   return (
