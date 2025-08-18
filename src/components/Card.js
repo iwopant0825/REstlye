@@ -209,7 +209,7 @@ export const ProductCard = ({ product, onSelect }) => {
         height="36"
         rx="6"
         fill="none"
-        stroke="#10b981"
+        stroke="#10b982"
         strokeWidth="2"
         strokeDasharray="4 4"
       />
