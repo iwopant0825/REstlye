@@ -277,10 +277,6 @@ export const DesignerCard = ({ designer }) => {
           </DesignerInfo>
         </CardHeader>
         <CardDescription>{designer.bio}</CardDescription>
-        <DesignerFooter>
-          <DesignerFeature>로열티 10–15%</DesignerFeature>
-          <DesignerFeature>대시보드</DesignerFeature>
-        </DesignerFooter>
       </CardContent>
     </CardContainer>
   );
