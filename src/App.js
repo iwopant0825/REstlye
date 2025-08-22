@@ -30,9 +30,12 @@ function App() {
       const target = document.querySelector(hash);
       if (target) {
         // 다음 페인트 이후 스크롤 보장
-        requestAnimationFrame(() =>
-          target.scrollIntoView({ behavior: "smooth", block: "start" })
-        );
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          // 스크롤 이후 해시 제거로 주소창 깔끔 유지
+          const clean = window.location.pathname + window.location.search;
+          window.history.replaceState(null, "", clean);
+        });
       }
     }
   }, [hash]);

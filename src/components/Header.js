@@ -45,11 +45,21 @@ const Logo = styled.a`
 `;
 
 const LogoIcon = styled.div`
-  width: 6.25rem;
-  height: 6.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 4rem;
+    height: 4rem;
+  }
 
   img {
     width: 100%;
@@ -224,10 +234,38 @@ const Header = () => {
     setMobileOpen(false);
   };
 
+  const cleanUrl = () => {
+    const clean = window.location.pathname + window.location.search;
+    window.history.replaceState(null, "", clean);
+  };
+
+  const scrollToId = (id) => {
+    const target = document.getElementById(id) || document.querySelector(`#${id}`);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const handleNavClick = (e, href) => {
+    if (!href || !href.startsWith("#")) return;
+    e.preventDefault();
+    const id = href.slice(1);
+    scrollToId(id);
+    cleanUrl();
+    closeMobileMenu();
+  };
+
   return (
     <HeaderContainer>
       <HeaderInner>
-        <Logo href="#home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Logo
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            cleanUrl();
+          }}
+        >
           <LogoIcon>
             <img
               src={process.env.PUBLIC_URL + "/Logo.svg"}
@@ -239,7 +277,11 @@ const Header = () => {
 
         <DesktopNav>
           {nav.map((item) => (
-            <NavLink key={item.href} href={item.href}>
+            <NavLink
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+            >
               {item.label}
             </NavLink>
           ))}
@@ -261,14 +303,14 @@ const Header = () => {
             <MobileNavLink
               key={item.href}
               href={item.href}
-              onClick={closeMobileMenu}
+              onClick={(e) => handleNavClick(e, item.href)}
             >
               {item.label}
             </MobileNavLink>
           ))}
           <MobileAuthButtons>
-            <LoginButton href="#signin">로그인</LoginButton>
-            <MobileSignupButton href="#signup">회원가입</MobileSignupButton>
+            <LoginButton href="#signin" onClick={(e) => { e.preventDefault(); cleanUrl(); }}>로그인</LoginButton>
+            <MobileSignupButton href="#signup" onClick={(e) => { e.preventDefault(); cleanUrl(); }}>회원가입</MobileSignupButton>
           </MobileAuthButtons>
         </MobileMenuInner>
       </MobileMenu>

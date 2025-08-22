@@ -23,7 +23,7 @@ const CardContent = styled.div`
 const CardHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: between;
+  justify-content: space-between;
   margin-bottom: ${({ theme }) => theme.spacing[3]};
 `;
 
@@ -209,7 +209,7 @@ export const ProductCard = ({ product, onSelect }) => {
         height="36"
         rx="6"
         fill="none"
-        stroke="#10b982"
+        stroke="#10b981"
         strokeWidth="2"
         strokeDasharray="4 4"
       />

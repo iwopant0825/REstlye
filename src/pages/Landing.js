@@ -194,7 +194,12 @@ const Grid = styled.div`
   gap: ${({ theme }) => theme.spacing[5]};
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
-  @media (max-width: 640px) {
+  @media (max-width: 479px) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing[4]};
+  }
+
+  @media (min-width: 480px) and (max-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
     gap: ${({ theme }) => theme.spacing[4]};
   }

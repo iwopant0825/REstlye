@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -153,7 +154,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .container {
-    width: 100vw;
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 ${({ theme }) => theme.spacing[4]};

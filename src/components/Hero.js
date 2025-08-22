@@ -4,11 +4,12 @@ import styled from "styled-components";
 
 const HeroSection = styled.section`
   position: relative;
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100svh - 4rem);
   padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 3rem 0;
